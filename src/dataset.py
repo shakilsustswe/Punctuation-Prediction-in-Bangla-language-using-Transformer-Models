@@ -7,6 +7,9 @@ import numpy as np
 def parse_data(file_path, tokenizer, sequence_len, token_style):
 
     print("file path: ", file_path)
+    x = file_path.split("/")[-1]
+    if x == ".ipynb_checkpoints":
+        continue
     data_items = []
     with open(file_path, 'r', encoding='utf-8') as f:
         lines = [line for line in f.read().split('\n') if line.strip()]
