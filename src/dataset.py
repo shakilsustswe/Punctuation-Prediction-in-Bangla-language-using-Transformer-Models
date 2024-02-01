@@ -11,6 +11,8 @@ def parse_data(file_path, tokenizer, sequence_len, token_style):
     with open(file_path, 'r', encoding='utf-8') as f:
         lines = [line for line in f.read().split('\n') if line.strip()]
         idx = 0
+        if file_path=="data/bn/test_book2": 
+            print("current reading line: ", lines, ", len: ", len(lines))
         # loop until end of the entire text
         while idx < len(lines):
             try:
