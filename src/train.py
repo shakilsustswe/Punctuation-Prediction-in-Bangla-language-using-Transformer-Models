@@ -68,10 +68,11 @@ data_loader_params = {
 }
 train_loader = torch.utils.data.DataLoader(train_set, **data_loader_params)
 val_loader = torch.utils.data.DataLoader(val_set, **data_loader_params)
-test_loaders = [torch.utils.data.DataLoader(x, **data_loader_params) for x in test_set]
+# test_loaders = [torch.utils.data.DataLoader(x, **data_loader_params) for x in test_set]
+for test_data in test_set:
+    print(test_data)  # This can help you see the characteristics of each dataset
+    loader = torch.utils.data.DataLoader(test_data, sampler=SequentialSampler(test_data), **data_loader_params)
 
-# # For each test set, initialize DataLoader with a SequentialSampler
-# test_loaders = [torch.utils.data.DataLoader(x, sampler=SequentialSampler(x), **data_loader_params) for x in test_set]
 
 # logs
 os.makedirs(args.save_path, exist_ok=True)
