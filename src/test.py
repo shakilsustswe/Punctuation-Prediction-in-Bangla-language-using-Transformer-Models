@@ -103,6 +103,13 @@ def test(data_loader):
                     fn[cor] += 1
                     fp[prd] += 1
                 cm[cor][prd] += 1
+
+    # Check if total is zero to avoid division by zero
+    if total == 0:
+        accuracy = 0.0
+    else:
+        accuracy = correct / total
+
     # ignore first index which is for no punctuation
     tp[-1] = np.sum(tp[1:])
     fp[-1] = np.sum(fp[1:])
@@ -110,7 +117,7 @@ def test(data_loader):
     precision = np.divide(tp.astype(float), tp.astype(float) + fp.astype(float), out=np.zeros_like(tp).astype(float), where=(tp + fp) != 0, dtype=float)
     recall = np.divide(tp.astype(float), tp.astype(float) + fn.astype(float), out=np.zeros_like(tp).astype(float), where=(tp + fn) != 0, dtype=float)
     f1 = 2 * precision * recall / (precision + recall)
-    return precision, recall, f1, correct/total, cm
+    return precision, recall, f1, accuracy, cm
 
 
 def run():
