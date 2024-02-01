@@ -71,7 +71,7 @@ val_loader = torch.utils.data.DataLoader(val_set, **data_loader_params)
 # test_loaders = [torch.utils.data.DataLoader(x, **data_loader_params) for x in test_set]
 for test_data in test_set:
     print(test_data)  # This can help you see the characteristics of each dataset
-    loader = torch.utils.data.DataLoader(test_data, sampler=SequentialSampler(test_data), **data_loader_params)
+    test_loaders = torch.utils.data.DataLoader(test_data, sampler=SequentialSampler(test_data), **data_loader_params)
 
 
 # logs
