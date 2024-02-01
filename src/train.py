@@ -9,6 +9,7 @@ from tqdm import tqdm
 from argparser import parse_arguments
 from dataset import Dataset
 from model import DeepPunctuation, DeepPunctuationCRF
+from torch.utils.data.sampler import SequentialSampler
 from config import *
 import augmentation
 
@@ -67,7 +68,10 @@ data_loader_params = {
 }
 train_loader = torch.utils.data.DataLoader(train_set, **data_loader_params)
 val_loader = torch.utils.data.DataLoader(val_set, **data_loader_params)
-test_loaders = [torch.utils.data.DataLoader(x, **data_loader_params) for x in test_set]
+# test_loaders = [torch.utils.data.DataLoader(x, **data_loader_params) for x in test_set]
+
+# For each test set, initialize DataLoader with a SequentialSampler
+test_loaders = [torch.utils.data.DataLoader(x, sampler=SequentialSampler(x), **data_loader_params) for x in test_set]
 
 # logs
 os.makedirs(args.save_path, exist_ok=True)
