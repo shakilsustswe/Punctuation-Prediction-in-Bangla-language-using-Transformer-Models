@@ -44,8 +44,15 @@ aug_type = args.augment_type
 #     start_epoch = 0
 # Datasets
 if args.language == 'bangla':
-    train_set = Dataset(os.path.join(args.data_path, 'bn/train'), tokenizer=tokenizer, sequence_len=sequence_len,
+    train_set_1 = Dataset(os.path.join(args.data_path, 'bn/train'), tokenizer=tokenizer, sequence_len=sequence_len,
                         token_style=token_style, is_train=True, augment_rate=ar, augment_type=aug_type)
+    # Load the new dataset
+    train_set_2 = Dataset(os.path.join(args.data_path, 'path_to_train_2'), tokenizer=tokenizer, sequence_len=sequence_len,
+                      token_style=token_style, is_train=True, augment_rate=ar, augment_type=aug_type)
+                      
+    # Combine the two datasets into a single dataset
+    train_set =  ConcatDataset([train_set_1, train_set_2])
+    
     val_set = Dataset(os.path.join(args.data_path, 'bn/dev'), tokenizer=tokenizer, sequence_len=sequence_len,
                       token_style=token_style, is_train=False)
     test_set_book = Dataset(os.path.join(args.data_path, 'bn/test_book2'), tokenizer=tokenizer, sequence_len=sequence_len,
