@@ -12,6 +12,7 @@ from model import DeepPunctuation, DeepPunctuationCRF
 from torch.utils.data.sampler import SequentialSampler
 from config import *
 import augmentation
+from torch.utils.data import ConcatDataset
 
 torch.multiprocessing.set_sharing_strategy('file_system')   # https://github.com/pytorch/pytorch/issues/11201
 
