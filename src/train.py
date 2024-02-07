@@ -56,7 +56,7 @@ if args.language == 'bangla':
 
     val_set = Dataset(os.path.join(args.data_path, 'bn/dev'), tokenizer=tokenizer, sequence_len=sequence_len,
                       token_style=token_style, is_train=False)
-    test_set_book = Dataset(os.path.join(args.data_path, 'bn/test_book2'), tokenizer=tokenizer, sequence_len=sequence_len,
+    test_set_book = Dataset(os.path.join(args.data_path, 'bn/test_book'), tokenizer=tokenizer, sequence_len=sequence_len,
                       token_style=token_style, is_train=False)                  
     test_set_news = Dataset(os.path.join(args.data_path, 'bn/test_news'), tokenizer=tokenizer, sequence_len=sequence_len,
                             token_style=token_style, is_train=False)
