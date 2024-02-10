@@ -11,7 +11,7 @@ Bangla datasets are provided in `data/bn` directory.
 We fine-tune a Transformer architecture based language model (e.g., BERT) for the punctuation restoration task.
 Transformer encoder is followed by a bidirectional LSTM and linear layer that predicts target punctuation token at
 each sequence position.
-![](./assets/model_architectue.png)
+![](./assets/model.png)
 
 ## Dependencies
 
